@@ -14,8 +14,19 @@ public class SampleTest extends BaseTest {
  HomePageEvents homePage= new HomePageEvents();
  LoginPageEvents loginPage= new LoginPageEvents();
 
-    @Test
+    @Test()
     public void sampleLogin(){
+        logger.info("Signin into LoginPage");
+        homePage.signInButton();
+        logger.info("Verifying if LoginPage load successfully");
+        loginPage.verifyLoginPageIsLoaded();
+        logger.info("Entering the loginCredentials");
+        loginPage.enterLoginCredentials();
+    }
+
+    @Test
+    public  void test(){
+
         logger.info("Signin into LoginPage");
         homePage.signInButton();
         logger.info("Verifying if LoginPage load successfully");

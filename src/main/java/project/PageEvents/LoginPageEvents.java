@@ -13,7 +13,7 @@ public class LoginPageEvents {
     }
 
     public void enterLoginCredentials(){
-        ele.getWebElement("ID", LoginPageElements.emailAddress).sendKeys("jadoun.himanshu@tftus.com");
+        ele.getWebElement("ID", LoginPageElements.emailAddress).sendKeys("hjadoun9@gmail.com");
         ele.getWebElement("ID", LoginPageElements.password).sendKeys("Hianshu@123");
     }
 }

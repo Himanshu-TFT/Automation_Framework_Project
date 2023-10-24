@@ -14,8 +14,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import project.Utilities.Constants;
+import project.Utilities.Grid;
+
 import java.io.File;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.time.Duration;
 
 public class BaseTest {
@@ -30,18 +33,18 @@ public class BaseTest {
         sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + File.separator + "reports" + File.separator + "ExtentReport.html");
         extent = new ExtentReports();
         extent.attachReporter(sparkReporter);
-        sparkReporter.config().setTheme(Theme.DARK);
+        sparkReporter.config().setTheme(Theme.STANDARD);
         extent.setSystemInfo("HostName", "Himanshu's LocalMachine");
         extent.setSystemInfo("UserName", "Himanshu");
-        sparkReporter.config().setDocumentTitle("Automation Test Report");
+        sparkReporter.config().setDocumentTitle("Automation Report");
         sparkReporter.config().setReportName("Automation Tests Results by Himanshu");
     }
 
     @BeforeMethod
     @Parameters("browser")
-    public void beforeMethod(String browser, Method testMethod) {
+    public void beforeMethod(String browser, Method testMethod) throws MalformedURLException {
         logger = extent.createTest(testMethod.getName());
-        setupDriver(browser);
+        driver = Grid.initializeBrowser(browser);
         driver.get(Constants.url);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -65,15 +68,15 @@ public class BaseTest {
         extent.flush();
     }
 
-    public void setupDriver(String browserName) {
-        if (browserName.equalsIgnoreCase("chrome")) {
-            driver = new ChromeDriver();
-        } else if (browserName.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
-        } else if (browserName.equalsIgnoreCase("edge")) {
-            driver = new EdgeDriver();
-        } else {
-            driver = new ChromeDriver();
-        }
-    }
+//    public void setupDriver(String browserName) {
+//        if (browserName.equalsIgnoreCase("chrome")) {
+//            driver = new ChromeDriver();
+//        } else if (browserName.equalsIgnoreCase("firefox")) {
+//            driver = new FirefoxDriver();
+//        } else if (browserName.equalsIgnoreCase("edge")) {
+//            driver = new EdgeDriver();
+//        } else {
+//            driver = new ChromeDriver();
+//        }
+//    }
 }
