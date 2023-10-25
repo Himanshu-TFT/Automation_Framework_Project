@@ -23,10 +23,10 @@ public class LoginPage {
     WebElement loginText;
 
     @FindBy(id = "email")
-    WebElement emailAddress;
+    WebElement emailAddressField;
 
     @FindBy(id="pass")
-    WebElement password;
+    WebElement passwordField;
 
     public void verifyLoginPageIsLoaded(){
         String actualText= loginText.getText();
@@ -34,9 +34,9 @@ public class LoginPage {
         Assert.assertEquals(actualText, expectedText);
     }
 
-    public void enterLoginCredentials(){
+    public void enterLoginCredentials(String Username, String Password){
 
-        emailAddress.sendKeys("hajdoun9@gmail.com");
-        password.sendKeys("Himanshu@123");
+        emailAddressField.sendKeys(Username);
+        passwordField.sendKeys(Password);
     }
 }

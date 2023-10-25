@@ -27,6 +27,9 @@ public class BaseClass {
     public ExtentTest logger;
 
     public PropertiesFile prop=new PropertiesFile();
+    public String URL = prop.getURL();
+    public String Username= prop.getUserName();
+    public String Password= prop.getPassword();
 
 
 
@@ -50,9 +53,7 @@ public class BaseClass {
         driver = Grid.initializeBrowser(browser);
         Action.implicitWait(driver, 10);
         driver.manage().window().maximize();
-        driver.get(prop.getURL());
-
-
+        driver.get(URL);
 
     }
 

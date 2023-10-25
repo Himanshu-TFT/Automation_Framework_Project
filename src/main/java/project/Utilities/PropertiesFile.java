@@ -48,7 +48,7 @@ public class PropertiesFile {
     }
 
     public String getUserName(){
-        return prop.getProperty("user");
+        return prop.getProperty("username");
     }
     public String getPassword(){
         return prop.getProperty("password");

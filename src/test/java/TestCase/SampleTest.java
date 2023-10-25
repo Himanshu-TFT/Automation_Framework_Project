@@ -21,7 +21,7 @@ public class SampleTest extends BaseClass {
         logger.info("Verifying if LoginPage load successfully");
         loginPage.verifyLoginPageIsLoaded();
         logger.info("Entering the loginCredentials");
-        loginPage.enterLoginCredentials();
+        loginPage.enterLoginCredentials(Username, Password);
 
 
     }
