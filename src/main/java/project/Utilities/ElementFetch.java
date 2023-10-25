@@ -1,13 +1,11 @@
 package project.Utilities;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-import static project.base.BaseTest.driver;
+import static project.base.BaseClass.driver;
 
 
 public class ElementFetch {

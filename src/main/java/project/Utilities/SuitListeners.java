@@ -7,14 +7,12 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.annotations.ITestAnnotation;
-import project.base.BaseTest;
+import project.base.BaseClass;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-
-import static project.base.BaseTest.driver;
 
 public class SuitListeners implements ITestListener , IAnnotationTransformer {
     @Override
@@ -30,7 +28,7 @@ public class SuitListeners implements ITestListener , IAnnotationTransformer {
     @Override
     public void onTestFailure(ITestResult result) {
         String filename = System.getProperty("user.dir")+ File.separator+"screenshots"+File.separator+result.getMethod().getMethodName();
-        File file = ((TakesScreenshot) BaseTest.driver).getScreenshotAs(OutputType.FILE);
+        File file = ((TakesScreenshot) BaseClass.driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(file, new File(filename+".png"));
         } catch (IOException e) {
