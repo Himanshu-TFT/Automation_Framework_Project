@@ -13,15 +13,15 @@ public class SampleTest extends BaseClass {
     @Test()
     public void sampleLogin(){
 
-        homePage= new IndexPage( driver);
-        loginPage = new LoginPage( driver);
+        homePage= new IndexPage();
+        loginPage = new LoginPage();
 
         logger.info("Signin into LoginPage");
-        homePage.clickLink();
+        homePage.clickOnSignInLink();
         logger.info("Verifying if LoginPage load successfully");
         loginPage.verifyLoginPageIsLoaded();
         logger.info("Entering the loginCredentials");
-        loginPage.enterLoginCredentials(Username, Password);
+        loginPage.login(Username, Password);
 
 
     }
