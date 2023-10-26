@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" thread-count="3">
+<suite name="All Test Suite" >
 
     <listeners>
         <listener class-name="project.Utilities.SuitListeners">
@@ -10,6 +10,12 @@
     <test name="ChromeTest" >
         <parameter name="browser" value="chrome"/>
         <classes>
+            <class name="TestCase.HomePageTest">
+                <methods>
+                    <include name="wishListTest"/>
+                    <include name="orderHistoryAndDetailsTest"/>
+                </methods>
+            </class>
             <class name="TestCase.SampleTest">
                 <methods>
                     <include name="sampleLogin"/>

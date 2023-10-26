@@ -15,7 +15,7 @@ public class AccountCreationPage extends BaseClass {
     WebElement SignUpPageTitle;
 
     public boolean validateAccountCreatePage(){
-        return Action.isDisplayed(driver,SignUpPageTitle);
+        return SignUpPageTitle.isDisplayed();
     }
 
 }

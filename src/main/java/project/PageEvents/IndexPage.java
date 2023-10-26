@@ -4,8 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import project.Utilities.ReusableActions.ActionDriver.Action;
 import project.base.BaseClass;
+
+import java.time.Duration;
 
 public class IndexPage extends BaseClass {
 
@@ -28,10 +32,15 @@ public class IndexPage extends BaseClass {
 
 
 
+
+
     public LoginPage clickOnSignInLink(){
         Action.click(driver, signInLink);
+//        signInLink.click();
         return new LoginPage();
     }
+
+
 
     public boolean validateLogo(){
         return Action.isDisplayed(driver,lumaLogo);

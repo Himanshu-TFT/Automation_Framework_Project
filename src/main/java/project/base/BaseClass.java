@@ -51,7 +51,7 @@ public class BaseClass {
 //        logger = extent.createTest(testMethod.getName());
 
         driver = Grid.initializeBrowser(browser);
-        Action.implicitWait(driver, 10);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
         driver.get(URL);
 
