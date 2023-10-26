@@ -15,6 +15,12 @@
                     <include name="sampleLogin"/>
                 </methods>
             </class>
+            <class name="TestCase.IndexPageTest">
+                <methods>
+                    <include name="verifyLogo"/>
+                    <include name="verifyTitle"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
