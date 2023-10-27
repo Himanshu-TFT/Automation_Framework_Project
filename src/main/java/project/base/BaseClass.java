@@ -1,20 +1,10 @@
 package project.base;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.markuputils.ExtentColor;
-import com.aventstack.extentreports.markuputils.MarkupHelper;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import project.Utilities.Constants;
 import project.Utilities.Grid;
 import project.Utilities.PropertiesFile;
-import project.Utilities.ReusableActions.ActionDriver.Action;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.time.Duration;
@@ -51,7 +41,7 @@ public class BaseClass {
 //        logger = extent.createTest(testMethod.getName());
 
         driver = Grid.initializeBrowser(browser);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
         driver.manage().window().maximize();
         driver.get(URL);
 

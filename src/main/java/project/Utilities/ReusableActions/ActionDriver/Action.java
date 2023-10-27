@@ -28,6 +28,11 @@ import project.base.BaseClass;
 
 public class Action extends BaseClass  {
 
+    public static void scrollByXOffsetYOffset(WebDriver driver, int xOffset, int yOffset) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(arguments[0],arguments[1])", xOffset, yOffset);
+    }
+
     public static void scrollByVisibilityOfElement(WebDriver driver, WebElement ele) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", ele);

@@ -3,8 +3,12 @@ package project.PageEvents;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import project.Utilities.ReusableActions.ActionDriver.Action;
 import project.base.BaseClass;
+
+import java.time.Duration;
 
 public class AddToCartPage  extends BaseClass {
     public AddToCartPage(){
@@ -26,7 +30,9 @@ public class AddToCartPage  extends BaseClass {
     @FindBy(xpath = "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")
     WebElement addToCartMessage;
 
-    @FindBy(xpath = "//a[@class='action showcart']")
+//    @FindBy(xpath = "//a[@class='action showcart']")
+//    WebElement cartBtn;
+    @FindBy(xpath = "//span[@class='counter-number']")
     WebElement cartBtn;
 
     @FindBy(xpath = "//button[@id='top-cart-btn-checkout']")
@@ -53,8 +59,10 @@ public class AddToCartPage  extends BaseClass {
         return Action.isDisplayed(driver,addToCartMessage);
     }
 
-    public OrderPage clickOnCheckout(){
-        Action.click(driver,cartBtn);
+    public OrderPage clickOnCheckout() throws InterruptedException {
+        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.elementToBeClickable(cartBtn)).click();
         Action.JSClick(driver,proceedToCheckoutBtn);
         return new OrderPage();
     }

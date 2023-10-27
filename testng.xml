@@ -10,6 +10,33 @@
     <test name="ChromeTest" >
         <parameter name="browser" value="chrome"/>
         <classes>
+
+            <class name="TestCase.EndToEndTest">
+                <methods>
+                    <include name="endToEndTest"/>
+                </methods>
+            </class>
+
+            <class name="TestCase.AddToCartPageTest">
+                <methods>
+                    <include name="addToCartTest"/>
+                </methods>
+            </class>
+
+            <class name="TestCase.SearchResultPageTest">
+                <methods>
+                    <include name="productAvailabilityTest"/>
+                </methods>
+            </class>
+
+
+
+            <class name="TestCase.AccountCreationPageTest">
+                <methods>
+                    <include name="verifyCreateAccountPageTest"/>
+                </methods>
+            </class>
+
             <class name="TestCase.HomePageTest">
                 <methods>
                     <include name="wishListTest"/>

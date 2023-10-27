@@ -16,8 +16,8 @@ public class OrderConfirmationPage extends BaseClass {
     @FindBy(xpath = "//span[@class='base']")
     WebElement confirmMessage;
 
-    public String validateConfirmMessage(){
-        String confirmMessageText =confirmMessage.getText();
-        return confirmMessageText;
+    public String validateConfirmMessage() throws InterruptedException {
+        Thread.sleep(10000);
+        return confirmMessage.getText();
     }
 }

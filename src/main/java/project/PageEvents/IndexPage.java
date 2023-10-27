@@ -13,7 +13,7 @@ import java.time.Duration;
 
 public class IndexPage extends BaseClass {
 
-//    WebDriver driver;
+
     public IndexPage(){
         PageFactory.initElements(driver, this);
     }
@@ -36,7 +36,6 @@ public class IndexPage extends BaseClass {
 
     public LoginPage clickOnSignInLink(){
         Action.click(driver, signInLink);
-//        signInLink.click();
         return new LoginPage();
     }
 
@@ -53,6 +52,7 @@ public class IndexPage extends BaseClass {
     public SearchResultPage searchProduct(String productName){
         Action.type(searchProductBox, productName);
         Action.click(driver,searchButton);
+        Action.scrollByXOffsetYOffset(driver,0,300);
         return new SearchResultPage();
     }
 }
