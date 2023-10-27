@@ -7,9 +7,11 @@ import org.openqa.selenium.support.PageFactory;
 import project.Utilities.ReusableActions.ActionDriver.Action;
 import project.base.BaseClass;
 
-public class OrderConfirmationPage extends BaseClass {
+public class OrderConfirmationPage {
 
-    public OrderConfirmationPage(){
+    WebDriver driver;
+    public OrderConfirmationPage(WebDriver driver){
+        this.driver= driver;
         PageFactory.initElements(driver,this);
     }
 

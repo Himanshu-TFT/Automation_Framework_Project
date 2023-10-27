@@ -15,8 +15,8 @@ public class SampleTest extends BaseClass {
     @Test()
     public void sampleLogin(){
 
-        indexPage= new IndexPage();
-        loginPage = new LoginPage();
+        indexPage= new IndexPage(driver);
+        loginPage = new LoginPage(driver);
 
 //        logger.info("Signin into LoginPage");
         indexPage.clickOnSignInLink();
@@ -24,7 +24,6 @@ public class SampleTest extends BaseClass {
         loginPage.verifyLoginPageIsLoaded();
 //        logger.info("Entering the loginCredentials");
         loginPage.login(Username, Password);
-
 
     }
 

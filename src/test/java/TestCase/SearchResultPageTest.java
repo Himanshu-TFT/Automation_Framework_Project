@@ -14,8 +14,9 @@ public class SearchResultPageTest extends BaseClass {
 
     @Test
     public void productAvailabilityTest(){
-        indexPage= new IndexPage();
-        searchResultPage=indexPage.searchProduct("t-shirt");
+        indexPage= new IndexPage(driver);
+        searchResultPage= new SearchResultPage(driver);
+        indexPage.searchProduct("t-shirt");
         boolean result = searchResultPage.isProductAvailable();
         Assert.assertTrue(result);
     }

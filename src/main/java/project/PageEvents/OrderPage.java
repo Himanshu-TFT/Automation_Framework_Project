@@ -1,9 +1,6 @@
 package project.PageEvents;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,9 +10,11 @@ import project.base.BaseClass;
 
 import java.time.Duration;
 
-public class OrderPage extends BaseClass {
+public class OrderPage  {
 
-    public OrderPage(){
+    WebDriver driver;
+    public OrderPage(WebDriver driver){
+        this.driver= driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -35,7 +34,7 @@ public class OrderPage extends BaseClass {
     WebElement nextBtn;
 
 
-    public PaymentPage SignInAndProceed(String Username, String Password) throws InterruptedException {
+    public void SignInAndProceed(String Username, String Password) throws InterruptedException {
 
 
         Action.type(emailAddressField, Username);
@@ -49,7 +48,7 @@ public class OrderPage extends BaseClass {
         Thread.sleep(10000);
 
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(shippingCostRadioBtn)).click();
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[contains(text(),'Next')]")))).click();
 
@@ -63,13 +62,11 @@ public class OrderPage extends BaseClass {
 //        shippingCostRadioBtn.click();
 //        nextBtn.click();
 
-        return new PaymentPage();
     }
 
-    public PaymentPage alreadySignedInJustProceed() throws InterruptedException {
+    public void alreadySignedInJustProceed() throws InterruptedException {
         Thread.sleep(10000);
         Action.click(driver,nextBtn);
-        return new PaymentPage();
     }
 
 }

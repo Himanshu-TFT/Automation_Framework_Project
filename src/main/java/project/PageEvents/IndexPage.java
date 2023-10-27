@@ -11,10 +11,13 @@ import project.base.BaseClass;
 
 import java.time.Duration;
 
-public class IndexPage extends BaseClass {
+public class IndexPage {
+
+    WebDriver driver;
 
 
-    public IndexPage(){
+    public IndexPage(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -34,9 +37,8 @@ public class IndexPage extends BaseClass {
 
 
 
-    public LoginPage clickOnSignInLink(){
+    public void clickOnSignInLink(){
         Action.click(driver, signInLink);
-        return new LoginPage();
     }
 
 
@@ -49,10 +51,9 @@ public class IndexPage extends BaseClass {
         return driver.getTitle();
     }
 
-    public SearchResultPage searchProduct(String productName){
+    public void searchProduct(String productName){
         Action.type(searchProductBox, productName);
         Action.click(driver,searchButton);
         Action.scrollByXOffsetYOffset(driver,0,300);
-        return new SearchResultPage();
     }
 }

@@ -19,16 +19,22 @@ public class EndToEndTest extends BaseClass {
 
     @Test
     public void endToEndTest() throws InterruptedException {
-        indexPage = new IndexPage();
-        searchResultPage = indexPage.searchProduct("t-shirt");
-        addToCartPage = searchResultPage.clickProduct();
-        addToCartPage.setSize();
-        addToCartPage.setColor();
+        indexPage = new IndexPage(driver);
+        searchResultPage = new SearchResultPage(driver);
+        addToCartPage =new AddToCartPage(driver);
+        orderPage = new OrderPage(driver);
+        paymentPage = new PaymentPage(driver);
+        orderConfirmationPage = new OrderConfirmationPage(driver);
+
+        indexPage.searchProduct("t-shirt");
+        searchResultPage.clickProduct();
+        addToCartPage.setSize("m");
+        addToCartPage.setColor("blue");
         addToCartPage.enterQuantity("2");
         addToCartPage.clickOnAddToCart();
-        orderPage = addToCartPage.clickOnCheckout();
-        paymentPage = orderPage.SignInAndProceed(orderPage.Username, orderPage.Password);
-        orderConfirmationPage = paymentPage.OrderPaymentAndConfirm();
+        addToCartPage.clickOnCheckout();
+        orderPage.SignInAndProceed(Username, Password);
+        paymentPage.OrderPaymentAndConfirm();
         String actualMessage = orderConfirmationPage.validateConfirmMessage();
         String expectedMessage = "Thank you for your purchase!";
         Assert.assertEquals(expectedMessage, actualMessage);

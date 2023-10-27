@@ -11,10 +11,11 @@ import project.base.BaseClass;
 
 
 
-public class LoginPage extends BaseClass{
+public class LoginPage {
 
-
-    public LoginPage(){
+    WebDriver driver;
+    public LoginPage(WebDriver driver){
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -39,16 +40,14 @@ public class LoginPage extends BaseClass{
         Assert.assertEquals(actualText, expectedText);
     }
 
-    public HomePage login(String Username, String Password){
+    public void login(String Username, String Password){
         Action.type(emailAddressField, Username);
         Action.type(passwordField, Password);
         Action.click(driver, signInBtn);
-        return new HomePage();
     }
 
-    public AccountCreationPage createNewAccount(){
+    public void createNewAccount(){
         Action.click(driver, signInBtn);
-        return new AccountCreationPage();
     }
 
 }

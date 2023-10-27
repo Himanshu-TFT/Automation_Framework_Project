@@ -11,10 +11,12 @@ import project.base.BaseClass;
 
 import java.time.Duration;
 
-public class HomePage extends BaseClass {
+public class HomePage {
 
-    public HomePage()
+    WebDriver driver;
+    public HomePage(WebDriver driver)
     {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -33,7 +35,7 @@ public class HomePage extends BaseClass {
 
     public boolean validateMyWishList()
     {
-        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(myProfileLink)).click();
         wait.until(ExpectedConditions.elementToBeClickable(myAccountLink)).click();
         return Action.isDisplayed(driver, myWishList);
@@ -41,7 +43,7 @@ public class HomePage extends BaseClass {
 
     public boolean validateMyOrdersHistory()
     {
-        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait =new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.elementToBeClickable(myProfileLink)).click();
         wait.until(ExpectedConditions.elementToBeClickable(myAccountLink)).click();
         return Action.isDisplayed(driver, myOrdersHistory);

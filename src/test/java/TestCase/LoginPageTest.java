@@ -10,14 +10,15 @@ import project.base.BaseClass;
 public class LoginPageTest extends BaseClass {
     IndexPage indexPage;
     LoginPage loginPage;
-
     HomePage homePage;
 
     @Test
     public void loginTest() {
-        indexPage = new IndexPage();
-        loginPage = indexPage.clickOnSignInLink();
-        homePage = loginPage.login(loginPage.Username, loginPage.Password);
+        indexPage = new IndexPage(driver);
+        loginPage = new LoginPage(driver);
+        homePage= new HomePage(driver);
+        indexPage.clickOnSignInLink();
+        loginPage.login(Username, Password);
         String actualURL= homePage.getCurrentURL();
         String expectedURL ="https://magento.softwaretestingboard.com/";
         Assert.assertEquals(expectedURL, actualURL);

@@ -16,9 +16,12 @@ public class AccountCreationPageTest extends BaseClass {
 
     @Test
     public void verifyCreateAccountPageTest(){
-        indexPage= new IndexPage();
-        loginPage=indexPage.clickOnSignInLink();
-        accountCreationPage= loginPage.createNewAccount();
+        indexPage= new IndexPage(driver);
+        loginPage = new LoginPage(driver);
+
+        accountCreationPage = new AccountCreationPage(driver);
+        indexPage.clickOnSignInLink();
+        loginPage.createNewAccount();
         boolean result= accountCreationPage.validateAccountCreatePage();
         Assert.assertTrue(result);
     }

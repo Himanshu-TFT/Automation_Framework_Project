@@ -10,13 +10,14 @@ public class IndexPageTest extends BaseClass {
 
     @Test
     public void verifyLogo(){
-        indexPage = new IndexPage();
+        indexPage = new IndexPage(driver);
         boolean result =indexPage.validateLogo();
         Assert.assertTrue(result);
     }
 
     @Test
     public void verifyTitle(){
+        indexPage = new IndexPage(driver);
         String expectedTitle = "Home Page";
         String actualTitle=indexPage.getMyStoreTitle();
         Assert.assertEquals(actualTitle,expectedTitle);
